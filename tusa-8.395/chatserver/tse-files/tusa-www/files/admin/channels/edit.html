@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Консоль админа -> Настройки -> Комнаты</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<style>
+.ci {background-color: #003060; border: 0}
+</style>
+<body>
+<big><big><center><b>Редактирование комнаты ~name~</b></center></big></big><br>
+<center><font class=yelmsg>~msg~</font></center>
+<center>
+
+<form name="f" method="POST">
+<input type=hidden name="cmd" value="update">
+<input type=hidden name="id" value="~id~">
+<input type=hidden name="msg" value="">
+
+<table cellspacing=1 cellpadding=1 class=border>
+<tr>
+    <td class=trdd>id</td>
+    <td class=trdk>~id~</td>
+</tr>
+<tr>
+    <td class=trdd>Имя в вебе. Тусуемся в чем? ...</td>
+    <td class=tdrk><input type=text name='name' value="~name~"></td>
+</tr>
+<tr>
+    <td class=trdd>Имя в вебе. Именительный падеж...</td>
+    <td class=tdrk><input type=text name='name2' value="~name2~"></td>
+</tr>
+
+<tr>
+    <td class=trdd>Цензура</td>
+    <td class=trdk><input class=ci type=checkbox name='censored' ~censored~></td>
+</tr>
+
+<tr>
+    <td class=trdd>Кидает в ...</td>
+    <td class=tdrk><input class=ci type=checkbox name='move' ~move~>
+    <input type=text name='move_to_channel' value="~move_to_channel~"></td>
+</tr>
+
+<tr>
+    <td class=trdd>Расширенный. (moderated, voice)</td>
+    <td class=tdrk><input class=ci type=checkbox name='extended' ~extended~></td>
+</tr>
+
+<tr>
+    <td class=trdd>Write level</td>
+    <td class=tdrk>~write_level~</td>
+</tr>
+
+<tr>
+    <td class=trdd>Read level</td>
+    <td class=tdrk>~read_level~</td>
+</tr>
+
+<tr>
+    <td class=trdd>Смайлы разрешены</td>
+    <td class=tdrk><input class=sa type=checkbox name='sa' ~smiles_allowed~></td>
+</tr>
+
+</table>
+<p>
+<center><input type=button value="Обновить" onclick="document.f.submit();return true;"></center>
+
+
+<p>
+
+<center>
+</form>

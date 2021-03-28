@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Консоль админа -> Настройки</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<script>
+
+function fupdate(n)
+{
+	document.f.cmd.value=n;
+	document.f.submit();
+	return false;
+}
+
+function opwin(url,nm,w,h)
+{
+	nw=window.open(url,nm,'toolbar=0,status=0,scrollbars=1,width='+w+',height='+h+',resizable=1');
+	nw.focus();
+	return false;
+}
+
+function k_s(id)
+{
+	if(!confirm('Убить сессию?')) return false;
+
+	document.f.cmd.value='killsession';
+	document.f.id.value=id;
+	document.f.submit();
+
+	return false;
+}
+
+function s_d(id)
+{
+	var ms=prompt('Что послать?','');
+	if(ms==null) return false;
+	document.f.msg.value=ms;
+	document.f.cmd.value='senddatatouser';
+	document.f.id.value=id;
+	document.f.submit();
+	return false;
+}
+</script>
+<body>
+<big><big><center><b>Админство чата</b></center></big></big><br>
+<center><font class=yelmsg>~msg~</font></center>
+<form name="f" method="POST">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="id" value="">
+<input type=hidden name="msg" value="">
+<input type=hidden name="sort" value="~sort~">
+
+
+<center>
+
+<input type=button value="Перезагрузить файлы" onclick="return fupdate('reload')">
+<input type=button value="Обновить чат" onclick="return fupdate('refresh');">
+<input type=button value="Комнаты" onclick="return opwin('/admin.tse/channels.tse','cha',800,400);">
+
+
+
+<br>
+<table border=0 cellpadding=1 width=100%>
+<tr>
+<td nowrap align=right>Послать данные всем:</td>
+<td nowrap width=100%><input type=textfield name="datatoall" value="" style="width: 100%"></td>
+<td><input type=button value="Послать" onclick="fupdate('senddatatoall')"></td>
+</tr>
+<tr>
+<td nowrap align=right>Послать системник всем комнатам:</td>
+<td nowrap width=100%><input type=textfield name="smsg" value="" style="width: 100%"></td>
+<td><input type=button value="Послать" onclick="fupdate('sendsysmsgtoall')"></td>
+</tr>
+</table>
+<br>
+<big><center>Залогиненные пользователи</center></big><br>
+
+<table border=0 cellspacing=1 cellpadding=1 class=border>
+<tr><td class=trdd><a class=nick href="?sort=login">Логин</a></td><td class=trdd><a class=nick href="?sort=nick">Ник</a></td><td class=trdd>В чате?</td><td class=trdd><a class=nick href="?sort=ip">IP-ProxyIP</a></td><td class=trdd>Время сессии</td><td class=trdd>Действие</td></tr>
+~users~
+</table>
+<br>
+Всего <b>~cnt~</b> пользователей залогинено.<br>
+<p>
+
+<center>
+<input type=button value="Обновить" onclick="return fupdate('');">
+<input type=button value="Закрыть" onclick="window.close();">
+<p>
+
+</form>

@@ -1,0 +1,24 @@
+<script>
+function cform()
+{
+	if(document.f.addnick.value==""){
+		alert('Вы забыли ввести ник...');
+		document.f.addnick.focus();
+		return false;
+	}
+	if(document.f.descr.value==""){
+		if(confirm('Вы не ввели описание. Продолжить?')) return true;
+		document.f.descr.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<form method=POST name=f onsubmit="return cform()">
+Добавить на голосование:<br>
+Ник <input type=textfield name="addnick" size=16 maxlength=16> - ~levels~<br>
+Комментарий:<br>
+<textarea cols=50 rows=3 name="descr" maxlength=1024></textarea>
+<br>
+<input type=submit value="Поставить на голосование">
+</form>

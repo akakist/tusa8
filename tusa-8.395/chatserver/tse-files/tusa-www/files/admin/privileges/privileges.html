@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Консоль админа -> Привилегии</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<script>
+
+var lvl=~level~;
+var ow=0;
+function l_info(id)
+{
+	if(lvl<9){
+		alert('У Вас нет прав, чтобы посмотреть инфу о логине.');
+		return false;
+	}
+	l='/c2/admin/logininfo.php?id='+id;
+	if(!ow || ow.closed){
+		ow=open(l,'owusr','toolbar=0,status=0,resizable=1,scrollbars=1,width=550,height=500');
+		ow.focus();
+	}
+	else{
+		ow.focus();
+		ow.location=l;
+	}
+	return false;
+}
+function fupdate(n)
+{
+	document.ff.cmd.value=n;
+	document.ff.submit();
+	return false;
+}
+
+function opwin(url,nm,w,h)
+{
+	nw=window.open(url,nm,'toolbar=0,status=0,scrollbars=1,width='+w+',height='+h+',resizable=1');
+	nw.focus();
+	return false;
+}
+function chk_form()
+{
+	if(document.ff.add.value==""){
+		alert('Надо бы ввести ник...');
+		document.ff.add.focus();
+		return false;
+	}
+	document.ff.cmd.value="add";
+}
+</script>
+
+<style>
+.cc {border:0; background-color: #003060;}
+</style>
+<body>
+<big><big><center><b>Привилегии пользователей</b></center></big></big><br>
+<center><font class=yelmsg>~msg~</font></center>
+<center>
+
+
+<table border=0 cellspacing=1 cellpadding=1 class=border>
+<tr align=center>
+	<td class=trdd>Логин</td>
+	<td class=trdd>Привилегии</td></tr>
+~users~
+</table>
+<p>
+
+
+
+<form name="ff" method="POST" onsubmit="return chk_form()">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="id" value="">
+
+Ник: <input type=textfield name="nick" maxlength=16 size=16 value="~nick~">
+<select name="priv">
+<option value='$accounts'>Аккаунты
+<option value='$apache_reload'>Апач перезагрузка
+<option value='$bot_reload'>Бот перезагрузка
+<option value='$credits'>Кредиты
+<option value='$forum'>Форум
+<option value='$logs'>Логи
+<option value='$news'>Новости
+<option value='$oldban'>Старые баны
+<option value='$photo'>Фото
+<option value='$privs'>Привилегии
+<option value='$settings'>Настройки
+<option value='$tags'>Теги
+<option value='$topic'>Топик
+<option value='$vote'>Голосование
+<option value='$zags'>ЗАГС
+<option value='$moders'>Модераторы
+</select>
+
+<input type=submit value="Добавить" onclick="document.ff.cmd.value='add'; return true;">
+<input type=submit value="Удалить" onclick="document.ff.cmd.value='remove'; return true;">
+<br><br>
+<center>
+<input type=button value="Обновить" onclick="return fupdate('');">
+<input type=button value="Закрыть" onclick="window.close();">
+</form>
+<p>
+</center>

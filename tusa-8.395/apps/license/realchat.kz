@@ -1,0 +1,11 @@
+host=realchat.kz
+host=realchat.kz.
+host=www.realchat.kz
+host=www.realchat.kz.
+host=real.kz
+host=real.kz.
+host=localhost
+host=localhost.
+valid=2008-06-01 00:00:00/2008-09-22 00:00:00
+max_users=800
+port=all

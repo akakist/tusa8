@@ -1,0 +1,5 @@
+textarea {border:0px solid #000000; background-color: #004590; font-family: Arial; color: #dcdcdc; font-size: 10pt;}
+input {border: 0px solid #000000; background-color: #004590; font-family: Sans Serif; color: #dcdcdc; font-size: 10pt;}
+
+.ab:link, .ab:visited, .ab:hover {font-family: Aial; text-decoration: none; color: #dcdcdc; font-weight: bold; font-size: 10pt;}
+.border {border: 0px solid #000000;background-color: #004590}

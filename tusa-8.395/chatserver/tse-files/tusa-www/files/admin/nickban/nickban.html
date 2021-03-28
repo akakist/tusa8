@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Консоль админа -> Бан по нику</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<script>
+<!--
+
+function fupdate(n)
+{
+	document.f.cmd.value=n;
+	document.f.submit();
+}
+function b_remove(id)
+{
+	document.f.cmd.value='remove';
+	document.f.id.value=id;
+	document.f.submit();
+}
+function do_add()
+{
+	if(document.f.addnick.value!=''){
+		document.f.cmd.value='add';
+		return true;
+	}
+	if(document.f.snick.value!=''){
+		document.f.l.value='0';
+		return true;
+	}
+	return true;
+}
+//-->
+</script>
+<body>
+<big><big><center><b>Бан ников</b></center></big></big><br>
+<center><font class=yelmsg>~msg~</font></center>
+<form name="f" method="POST" onSubmit="return do_add();">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="id" value="">
+<input type=hidden name="l" value="~numb~">
+<center>
+<table cellspacing=0 cellpadding=0 border=0 class=border>
+<tr>
+<td align=right valign=top>
+Ник: <input type=textfield name="addnick" size=20 maxlength=16>&nbsp;<input type=submit value="OK">
+</td>
+<td width=100>&nbsp;</td>
+<td align=right valign=top>
+Поиск ника: <input type=textfield name="snick" size=20 maxlength=16 value="~snick~">&nbsp;<input type=submit value="OK">
+</td>
+</tr>
+</table>
+<br>
+
+<center>
+Всего <b>~cnt~</b> забаненых ника(ов).<br>
+Показаны с ~start~ по ~end~.<p>
+<table class=border><tr><td>
+~list~</table><br><br>
+<table cellspacing=2 cellpadding=2 border=0 class=border>
+<tr align=left>
+<td><a href="?sort=nick" class=nick>Ник</a></td>
+<td><a href="?sort=who" class=nick>Кем</a></td><td></td></tr>
+~data~
+</table>
+<br><br>
+<table class=border><tr><td>
+~list~</table><br><br>
+
+</center>
+<p>
+<p>
+<big><b>Заметка</b></big><br><br>
+Чтобы забаннить ник надо просто ввести ник :)<br>
+Если надо обновить страничку, то надо кликать кнопку "Обновить" (внизу)<br>
+Чтобы разбаннить ник, надо нажать на против него кнопку "Снять"<br>
+<br><br>
+<center>
+<input type=hidden name="sort" value="~sort~">
+<input type=button value="Обновить" onclick="fupdate('');">
+<input type=button value="Закрыть" onclick="window.close();">
+</center>
+</form>
+<p>

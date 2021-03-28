@@ -1,0 +1,270 @@
+#ifdef __GNUC__
+#pragma implementation				// gcc: implement sql_udf.h
+#endif
+
+#include "stdafx.h"
+#include <sys/stat.h>
+#include "web_server.h"
+#include "web_server_data.h"
+
+#include "mutex_inspector.h"
+#include "tcp_server_data.h"
+#include "web_connection.h"
+//#include "web_user.h"
+#include "file_set.h"
+#include <set>
+#include "str_lib.h"
+#include "tcp_sender.h"
+#include "tcp_stats.h"
+#include "thread_descr.h"
+void on_sender_handle_error(sender_datum_type s_type, unsigned int user_id);
+/////////
+	deque <PTR_getter<sender_datum> > sender_data;
+	_mutex  sender_dataMX("sender_dataMX");
+	map<sender_datum_type,deque<unsigned int> > sender_errors;
+	_mutex  sender_errorMX("sender_errorMX");
+
+
+/////////	
+//users_to_send
+struct sender_datum_getter
+{
+	web_server *server;
+	
+  sender_datum_type s_type;
+  unsigned int user_id;
+	PTR_getter <c_socket> __S;
+	bool getted_success;
+	_mutex *s_lock;
+	string data;
+	c_socket*  isock;
+	bool isock_connected;
+	int send_result;
+	sender_datum_getter();
+	~sender_datum_getter();
+
+};
+sender_datum_getter::~sender_datum_getter()
+{MUTEX_INSPECTOR;
+	bool need_call_on_sender_handle_error = false;
+	if (getted_success && s_lock) {MUTEX_INSPECTOR;
+		s_lock->unlock();
+		if (send_result == -1)	// on error
+		{MUTEX_INSPECTOR;
+			PTR_getter_lock_write <c_socket> s(__S);
+			s->disconnect();
+			need_call_on_sender_handle_error = true;
+
+		}
+	}
+	if (need_call_on_sender_handle_error)
+	{MUTEX_INSPECTOR;
+		MUTEX_LOCK kall(sender_errorMX);
+		sender_errors[s_type].push_back(user_id);
+	}
+
+}
+sender_datum_getter::sender_datum_getter()
+        :	  __S(NULL), getted_success(false), s_lock(NULL), isock(NULL), isock_connected(false), send_result(false)
+{MUTEX_INSPECTOR;
+    XTRY
+    {
+        MUTEX_LOCK kall(sender_dataMX);
+        if (sender_data.size() == 0)
+        return;
+        else {MUTEX_INSPECTOR;
+//            logErr2("sender_data.size()=%d",sender_data.size());
+                for (typeof(sender_data.begin()) i = sender_data.begin(); i != sender_data.end(); i++) {
+					bool socket_ok=false;
+                    {MUTEX_INSPECTOR;
+                        if(!(*i))
+                        {
+                            logErr2("if(!(*i)) sender_data.size()=%d %s %d",sender_data.size(),__FILE__,__LINE__);
+                            sender_data.erase(i);
+                            return;
+                        }
+                        //bool need_erase=false;
+                        //{
+                        {
+                            PTR_getter_lock_write < sender_datum > sd(*i);
+                            if(sd->__S){MUTEX_INSPECTOR;
+                                XTRY
+                                PTR_getter_lock_write <c_socket> u(sd->__S);
+                                s_lock = &u->__dataMuteX;
+                                isock = u->__get_this__();
+                                isock_connected = u->connected();
+								socket_ok=isock_connected;
+                                XPASS
+                            }
+                            else
+                            {
+                                logErr2("!sd->__S %s %d",__FILE__,__LINE__);
+                                socket_ok=false;
+                            }
+                            //}
+                            /*if(need_erase)
+                            {
+                            	sender_data.erase(i);	
+                            	return;
+                            }	**/
+#ifndef WIN32
+                            if (s_lock && socket_ok) {MUTEX_INSPECTOR;
+                                XTRY
+                                if (!s_lock->trylock()) {
+                                    getted_success = true;
+                                }
+                                XPASS
+                            }
+#else
+                            if (s_lock && socket_ok) {MUTEX_INSPECTOR;
+                                XTRY
+                                s_lock->lock();
+                                getted_success = true;
+                                XPASS
+                            }
+#endif
+                            if (getted_success && socket_ok) {MUTEX_INSPECTOR;
+                                XTRY
+                                s_type= sd->s_type;
+                                user_id=sd->user_id;
+                                __S = sd->__S;
+                                data = sd->data;
+                                XPASS
+                            }
+                        }
+                    }
+                    if (getted_success) {MUTEX_INSPECTOR;
+                        XTRY
+                        sender_data.erase(i);
+                        return;
+                        XPASS
+                    }
+					if(!socket_ok)
+					{
+                        sender_data.erase(i);
+                        return;
+					}
+                }
+            }
+    }
+    return;
+    XPASS
+
+}
+void do_sender_for_1(sender_datum_getter &send_task)
+{MUTEX_INSPECTOR;
+
+	if(!send_task.isock_connected)return;
+	if(!send_task.isock)return;
+	bool need_call_on_sender_handle_error = false;
+	if (send_task.data.size()) {MUTEX_INSPECTOR;
+
+#ifdef __linux__
+		int flags = MSG_NOSIGNAL | MSG_DONTWAIT;
+#else
+		int flags = 0;
+#endif
+	{MUTEX_INSPECTOR;
+		try{
+		send_task.send_result = send_task.isock->send(send_task.data.data(), send_task.data.size(), flags);
+		} 
+		catch(socketError e)
+		{
+//			logErr2("socketError %s %s %d",e.what(),__FL__);
+			send_task.send_result=-1;
+		}
+		catch(cError e)
+		{
+//			logErr2("cError %s %s %d",e.what(),__FL__);
+			send_task.send_result=-1;
+		}
+		catch(...)
+		{
+//			logErr2("send_task.isock->send(send_task.data.data(), send_task.data.size(), flags); CATCHED");
+			send_task.send_result=-1;
+		}
+	}	
+		if (send_task.send_result == -1) {
+		  //do something in destructor
+		}
+		else {MUTEX_INSPECTOR;
+
+			tcp_total_send += send_task.send_result;
+#ifdef DEBUG
+			if (send_task.send_result != send_task.data.size()) {
+				logErr("---Warning: send() return %d but sendportion=%d", send_task.send_result, send_task.data.size());
+			}
+#endif
+		}
+	}
+
+}
+
+
+void *sender(void *pr)
+{
+	sender_params* pars=(sender_params*)pr;
+	
+//	st_thread_description("sender undef");
+
+//	time_t web_server_sender_usleep_timeout = pars->usleep_timeout;
+	while (1) {
+		try {
+			{
+				while (1) {
+//					st_thread_description("sender processing");
+					sender_datum_getter us;
+					if (us.getted_success) {
+						try{MUTEX_INSPECTOR;
+						::do_sender_for_1(us);
+						} catch(...)
+						{
+							logErr2("ZCATCH %s %d",__FL__);
+							throw;
+						}
+						continue;
+					}
+					else {
+//						st_thread_description("sender sleeping");
+						usleep(pars->usleep_timeout);
+					}
+				}
+			}
+		}
+		STDCATCHS("sender while(1) STDCATCHS");
+		usleep(pars->usleep_timeout);
+	}
+	return NULL;
+}
+
+static void *T_run_sender(void *pr)
+{//MUTEX_INSPECTOR; 
+
+	string ss="www sender";
+	log_start_thread(ss);
+
+	while (1) {
+		try {
+			sender(pr);
+#ifdef DEBUG
+			logErr("--Error: ts_run_sender: sender - exited. ??? %s %d", __FILE__, __LINE__);
+#endif
+		}
+		STDCATCHS("run_sender STDCATCHS");
+	}
+	return NULL;
+}
+void run_senders(unsigned int count,m_var<unsigned int> &timeout)
+{
+	pthread_t pt;
+	sender_params *pars=new sender_params(timeout);
+	for (int i = 0; i < count; i++) {
+		int res = pthread_create(&pt, NULL, T_run_sender, (void *)pars);
+		if (res != 0) {
+#ifdef DEBUG
+			throw cError("ws_start_sub_tcp(() - ptread_create error");
+#endif
+		}
+	}
+
+}

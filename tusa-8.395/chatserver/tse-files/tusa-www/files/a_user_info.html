@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Информация о пользователе</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<script>
+var uf=0;
+function do_f(id)
+{
+	locat='/userphotos/'+id;
+	sx=screen.width/3*2;
+	sy=screen.height/5*4;
+	if(!uf || uf.closed)
+	{
+		uf=open(locat,'uf','toolbar=0,status=0,resizable=1,scrollbars=1,width='+sx+',height='+sy);
+	}
+	else
+	{
+		uf.focus();
+		uf.location=locat;
+	}	
+//	return true;
+}
+
+var ow=0;
+
+function opwin(l,w,h)
+{
+	if(!ow || ow.closed){
+		ow=open(l,'owusr','toolbar=0,status=0,resizable=1,scrollbars=1,width='+w+',height='+h);
+		ow.focus();
+	}
+	else{
+		ow.focus();
+		ow.location=locat;
+	}	
+}
+var uni;
+function do_bnick(id)
+{
+	var r=Math.random();
+	locat='/nick_buy?n='+id;
+	sx=400;//screen.width/3*2;
+	sy=200;//screen.height/5*4;
+	if(!uni || uni.closed){
+		uni=open(locat,'uni','toolbar=0,status=0,resizable=1,scrollbars=1,width='+sx+',height='+sy);
+		uni.focus();
+	}
+	else{
+		uni.focus();
+		uni.location=locat;
+	}	
+//	return true;
+}
+
+</script>
+<BODY>
+<center>
+<!---->
+<hr width=100% size=2>
+<table cellspacing=1 cellpadding=1 border=0>
+<tr><td colspan=2 align=center><big><b>~nick~</b></big>~admin~&nbsp;&nbsp;&nbsp;<a href=# onclick="return opwin('/admin/logininfo?id=~id~',550,500)"><img src=/pics/quest.gif width=24 height=24 border=0 alt='Инфо о логине'></a>~eadmin~</td></tr>
+~userinfo~
+</table></center>
+<br>
+<center><a href="javascript: window.close()">Закрыть</a>
+<br>
+<br>
+~bb3~ &nbsp;&nbsp;&nbsp; ~bb4~
+</center>
+</table>

@@ -1,0 +1,23 @@
+#hm0 {display: block}
+#hs0 {display: block}
+
+.nick0, .nick0:link, a.nick0:visited {color: #80A0F0; text-decoration: none;}
+.nick0:hover,a.nick0:hover {text-decoration: underline;}
+
+.nickul0, .nickul0:link, a.nickul0:visited {color: #80A0F0; text-decoration: none;}
+.nickul0:hover,a.nickul0:hover {text-decoration: underline;}
+
+.nickulb0:link, a.nickulb0:visited {color: #EA97D1;}
+.nickulb0:hover,a.nickulb0:hover {text-decoration: underline;}
+
+.ms0 {color: #00B030}
+.mf0 {color: #dcdcdc}
+.mt0 {color: #80AAA8}
+.mp0 {background-color: #004080; color: #AACDD9}
+
+.mmit0 {color: #00B030}
+.mps0 {background-color: #005025}
+.mpst0 {background-color: #005025; border: 1px solid #000000; width: 100%}
+.mpt0 {background-color: #004080; border: 1px solid #000000; width: 100%}
+.mptxt0 {color: #dcdcdc}
+

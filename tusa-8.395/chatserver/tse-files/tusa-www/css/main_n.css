@@ -1,0 +1,75 @@
+.border {border: 1px solid #000000;background-color: #004590}
+.borderg {border: 1px solid #000000;background-color: #006030}
+.ab:link, .ab:visited, .ab:hover {font-family: Aial; text-decoration: none; color=#dcdcdc; font-weight: bold; font-size: 11px;}
+
+a:link, a:visited {color: #eecc30; text-decoration: none;}
+a:hover {text-decoration: underline;}
+.nick, .nick:link, a.nick:visited {color: #80A0F0; text-decoration: none;}
+.nick:hover,a.nick:hover {text-decoration: underline;}
+.nickb:link, a.nickb:visited {color: #EA97D1}
+.nickb:hover,a.nickb:hover {text-decoration: underline;}
+
+input {background-color: #0059b3; color: #ffffff; font-size: 10pt; border-left: 2px solid #003775; border-right: 2px solid #0060b0; border-top: 2px solid #003775; border-bottom: 2px solid #0060b0;}
+SELECT {FONT-SIZE: 10pt; background-color: #0059B3; color: white;}
+.sl {color: white; width: 150}
+.c_b {background: #003570; border: 0px;}
+.uf {font-family: Verdana, Arial; font-size: 9pt; color: rgb(220,220,220);}
+FORM {FONT-FAMILY: Verdana; FONT-SIZE: 10pt}
+
+.lb {border-bottom: 1px solid rgb(0,60,120);background-color: #002550}
+.lb_ovr {border-bottom: 1px solid rgb(0,60,120);background-color: #003570}
+.lb_c {background-color: #002550}
+
+.tdrk {background-color: #003060}
+.wh {color: #dcdcdc}
+
+.aw:link, .aw:hover, .aw:visited {color: #dcdcdc;}
+
+.tb {border-top: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #003060}
+.tb_ovr {border-top: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #004590}
+.t {border-top: 1px solid #000000; background-color: #003060}
+.t_ovr {border-top: 1px solid #000000; background-color: #004590}
+.b {border-bottom: 1px solid #000000; background-color: #003060}
+.blr {border-bottom: 1px solid #000000; background-color: #004590}
+.tt {background-color: #004590}
+.tbg {border-bottom: 1px solid #000000; background-color: #006030}
+.tg {border-top: 1px solid #000000; background-color: #006030}
+.tg_ovr {border-top: 1px solid #000000; background-color: #009045}
+body,td, p, div,pre {font-family: Verdana, Arial; font-size: 10pt; color: #dcdcdc; background-color: #003570}
+
+.yelmsg {color: #eecc30; font-weight: bold;}
+.yelmsgnb {color: #eecc30}
+.infd {color: #80A0F0}
+.infn {color: #00b030}
+.gr {color: #00c045}
+
+.mmit {color: #00B030}
+.mpt {background-color: #004080; border: 1px solid #000000; width: 100%}
+.mptxt {color: #dcdcdc}
+.mp {background-color: #004080; color: #AACDD9}
+.mpst {background-color: #005025; border: 1px solid #000000; width: 100%}
+.mps {background-color: #005025}
+.ms {color: #00B030}
+.mf {color: #dcdcdc}
+.mt {color: #80AAA8}
+
+.ta {width: 400; font-family:Arial; font-size: 9pt;}
+
+.vyes {color: #00aa00}
+.vno {color: #CE3655}
+.vnf {color: #bcbcbc}
+
+.fusr {font-family: Verdana, Arial; font-size: 8.5pt; color: #dcdcdc; background-color: #003060}
+.fusrc {font-family: Verdana, Arial; font-size: 8.5pt; color: #dcdcdc; background-color: #003060}
+
+.trdd {background-color: #002550}
+.trd {background-color: #003060}
+
+.lab:link, .lab:visited, .lab:hover {font-family: Aial; text-decoration: none; color=#eecc30; font-size: 12px;}
+.tc_b {background: #003060; border: 0px;}
+.h {color: #ffcc30; font-weight: bold;}
+
+.forumq {color: #989898}
+
+#bigbutt {visibility: visible; position: absolute; top: 0}
+#smallbutt {visibility: hidden; position: absolute; top: 0}

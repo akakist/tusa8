@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Консоль админа -> Бан по IP</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<script>
+<!--
+
+function fupdate(n)
+{
+	document.f.cmd.value=n;
+	document.f.submit();
+}
+function b_remove(id)
+{
+	document.f.cmd.value='remove';
+	document.f.id.value=id;
+	document.f.submit();
+}
+function do_add()
+{
+	if(document.f.addip.value==''){
+		return false;
+        }
+	document.f.cmd.value='add';
+	document.f.bcnt.value=document.f.how.options[document.f.how.selectedIndex].text;
+//	document.f.submit();
+	return true;
+}
+function ip_inf(ip)
+{
+    ip=open('http://stars.tomsk.ru/ip_info.phtml?ip='+ip,'ip','toolbar=0,status=0,resizable=0,scrollbars=0,width=420,height=160');
+    ip.focus();
+    return false;
+}
+//-->
+</script>
+<body>
+<big><big><center><b>Бан по IP</b></center></big></big><br>
+<center><font class=yelmsg>~msg~</font></center>
+<form name="f" method="POST" onSubmit="return do_add();">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="id" value="">
+<input type=hidden name="bcnt" value="">
+<table cellspacing=2 cellpadding=2 border=0 width="100%" class=border>
+<tr align=left>
+<td>IP</td><td>Дата</td><td>На скока</td><td>Когда истекает срок</td><td>Кем</td><td></td></tr>
+~data~
+</table>
+<p>
+<table border=0 cellspacing=1 cellpadding=1 class=border>
+<tr valign=middle><td align=right>
+Добавить адрес: <input type=textfield name="addip" size=20 maxlength=15>
+</td><td rowspan=2>
+на
+<select name="how">
+<option value=60>1 минуту
+<option value=300 SELECTED>5 минут
+<option value=600>10 минут
+<option value=1200>20 минут
+<option value=1800>30 минут
+<option value=3600>1 час
+<option value=7200>2 часа
+<option value=21600>6 часов
+<option value=43200>12 часов
+<option value=86400>1 день
+<option value=172800>2 дня
+<option value=604800>1 неделю
+<option value=1209600>2 недели
+</select>
+<input type=submit value="OK">
+</td></tr>
+</table>
+<p>
+Всего <b>~cnt~</b> забаненных адресов.<br><br>
+<big><b>Заметка</b></big><br><br>
+Если надо обновить страничку, то надо кликать кнопку "Обновить" (внизу)<br>
+Что удалить один из адресов, надо нажать на против него кнопку "Снять"
+<br><br>
+<center>
+<input type=hidden name="sort" value="~sort~">
+<input type=button value="Обновить" onclick="fupdate('');">
+<input type=button value="Закрыть" onclick="window.close();">
+</center>
+</form>
+<p>

@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Записки</TITLE>
+</head>
+
+
+<script>
+<!--
+
+var sending=false;
+
+uinfo=0;
+function user_info(ni)
+{
+	locat='/auserinfo/'+ni;
+	if(!uinfo || uinfo.closed){
+		uinfo=open(locat,'fuinfo','toolbar=0,status=0,resizable=1,scrollbars=1,width=505,height=415');
+	}
+	else{
+		uinfo.focus();
+		if(uinfo.location!=locat){
+			uinfo.location=locat;
+		}
+	}
+	return false;
+}
+
+//-->
+</script>
+
+<frameset rows="*,0" border=0 frameborder=no framespacing=2>
+<frame name="notes" src="/notes.tse~folder~" scrolling=auto marginwidth=3 marginheight=3>
+<frame name="hidden" src="/emptyframe.php" scrolling=no marginwidth=2 marginheight=2 frameborder=no>
+</frameset>
+
+<noframes>
+Ваш браузер не поддерживает фреймы! Обновите свой браузер, тока пожалуйста Nescape Navigator не ставьте!
+</noframes>
+</HTML>

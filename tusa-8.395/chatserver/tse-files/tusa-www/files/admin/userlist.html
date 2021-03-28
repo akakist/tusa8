@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Консоль админа -> Список пользователей</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<script>
+<!--
+
+function do_refresh()
+{
+	document.f.action='userlist';
+	document.f.submit();
+}
+function fupdate(n)
+{
+	document.f.cmd.value=n;
+	document.f.submit();
+}
+function dk(name,id)
+{
+    s=prompt(name+' будет выставлен из чата за ?????? (Указать за что, например: "маты", только без слова "ЗА")','');
+	if(s==null)
+	{
+		return false;
+	}
+	document.f.cmd.value='kick';
+	document.f.id.value=id;
+	document.f.msg.value=s;
+	document.f.submit();
+	return false;
+}
+function dbl(name,id){
+    s=prompt(name+' будет забанен по логину за ?????? (Указать за что, например: "маты", только без слова "ЗА")','');
+	if(s==null)
+	{
+		return false;
+	}
+	document.f.cmd.value='bl';
+	document.f.id.value=id;
+	document.f.msg.value=s;
+	document.f.submit();
+	return false;
+}
+function dbi(name,id){
+    s=prompt(name+' будет забанен по IP за ?????? (Указать за что, например: "маты", только без слова "ЗА")','');
+	if(s==null)
+	{
+		return false;
+	}
+	document.f.cmd.value='bi';
+	document.f.id.value=id;
+	document.f.msg.value=s;
+	document.f.submit();
+	return false;
+}
+function dbn(name,id){
+    s=prompt(name+' будет забанен по нику за ?????? (Указать за что, например: "маты", только без слова "ЗА")','');
+	if(s==null)
+	{
+		return false;
+	}
+	document.f.cmd.value='bn';
+	document.f.id.value=id;
+	document.f.msg.value=s;
+	document.f.submit();
+	return false;
+}
+function dbp(name,id){
+    s=prompt(name+' будет забанен по proxy за ?????? (Указать за что, например: "маты", только без слова "ЗА")','');
+	if(s==null)
+	{
+		return false;
+	}
+	document.f.cmd.value='bp';
+	document.f.id.value=id;
+	document.f.msg.value=s;
+	document.f.submit();
+	return false;
+}
+function ip_inf(ip)
+{
+    ip=open('http://stars.tomsk.ru/ip_info.phtml?ip='+ip,'ip','toolbar=0,status=0,resizable=0,scrollbars=0,width=420,height=160');
+    ip.focus();
+    return false;
+}
+//-->
+</script>
+
+<BODY onload="setTimeout('do_refresh()',120000);">
+
+<big><big><center><b>Список пользователей</b></center></big></big><br>
+<center><font class=yelmsg>~msg~</font></center>
+<center>
+<form name="ff"  method="POST">
+~channels~
+</form>
+
+<form name="f" action="userlist_command" method="POST">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="id" value="">
+<input type=hidden name="sort" value="~sort~">
+<input type=hidden name="msg" value="">
+
+
+<table cellspacing=2 cellpadding=2 border=0>
+<tr align=left><td>NN</td><td><a href="?sort=nick&c=~c~" class=nick><b>Ник</b></a></td><td><a href="?sort=login&c=~c~" class=nick><b>Логин</b></a></td><td><a href="?sort=type&c=~c~" class=nick><b>Тип</b></a></td><td><a href="?sort=ip&c=~c~" class=nick><b>IP</b></a></td><td></td></tr>
+~data~
+</table><br>
+Всего пользователей <b>~cnt~</b>
+<p>
+<big><b>Заметка</b></big><br><br>
+Все действия производимые на этой странице приводят к кику.<br>
+Кликнув на ник - значит забаннить этот ник.<br>
+Кликнув на логин - забаннить этот логин на 10 минут.<br>
+Кликнув на АйПи - забаннить этот адрес на 10 минут.<br>
+Если надо обновить страничку, то надо кликать кнопку "Обновить" (внизу)<br>
+<br><br>
+<center>
+<input type=button value="Обновить" onclick="do_refresh();">
+<input type=button value="Закрыть" onclick="window.close();">
+</center>
+</form>

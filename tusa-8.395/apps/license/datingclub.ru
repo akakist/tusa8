@@ -1,0 +1,11 @@
+application=webchat
+host=datingclub.ru
+host=www.datingclub.ru
+host=datingclub.ru.
+host=www.datingclub.ru.
+host=chat.datingclub.ru
+host=www.chat.datingclub.ru
+host=chat.datingclub.ru.
+host=www.chat.datingclub.ru.
+max_users=20
+port=all

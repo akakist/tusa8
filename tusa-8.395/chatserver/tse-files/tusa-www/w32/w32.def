@@ -1,0 +1,9 @@
+; w32.def : Declares the module parameters.
+
+LIBRARY      "w32.OCX"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer PRIVATE

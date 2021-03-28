@@ -1,0 +1,4 @@
+string st_rsa::decrypt(const enc_string & m, int (*func) (int, const unsigned char *, unsigned char *, RSA *, int))
+before loop for
+after loop for
+

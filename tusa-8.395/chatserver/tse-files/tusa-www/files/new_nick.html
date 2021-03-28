@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Новый ник</TITLE>
+</head>
+
+<LINK href="/css/main.css" rel=stylesheet type=text/css>
+<script language="JavaScript">
+<!--
+function checkfields()
+{
+	if( document.nickform.nick.value == "" )
+	{
+		window.alert( "Вы забыли ввести ник..." );
+		document.nickform.nick.focus();
+		return false;
+	}
+}
+//-->
+</script>
+<BODY>
+<form method="POST" name="nickform" onSubmit="return checkfields();">
+<TABLE class=border border=0 cellspacing=0 cellpadding=0 width=100%>
+<TR><TD align=center height=17 colspan=2 class=tb style="border-top: 0px">Новый ник</TD></TR>
+<TR><TD align=center colspan=2><font class=yelmsg>~msg~</font></TD></TR>
+<tr><td colspan=2>&nbsp;</td></tr>
+<TR valign=top>
+<TD align=right>Введите ник:&nbsp;</TD>
+<TD><input type=textfield name="nick" value="~nick~" size=16 maxlength=16></TD>
+</TR>
+<TR>
+<TD colspan=2 align=center><br><input type=submit value="Забить!"></TD>
+</TR>
+<tr><td colspan=2>&nbsp;</td></tr>
+</TABLE>
+</form>
+<script language="JavaScript">
+<!--
+	document.nickform.nick.focus();
+//-->
+</script>

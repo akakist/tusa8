@@ -1,0 +1,39 @@
+cmake_minimum_required (VERSION 2.6)
+
+
+add_library(core_web STATIC
+
+c_conn.cpp
+c_conn.h
+html_out.cpp
+html_out.h
+oscar_client.cpp
+oscar_client.h
+tcp_dialog_server.cpp
+tcp_dialog_server.h
+tcp_oscar_dialog_server.cpp
+tcp_oscar_dialog_server.h
+tcp_sender.cpp
+tcp_sender.h
+tcp_server.cpp
+tcp_server.h
+tcp_server_connection.cpp
+tcp_server_connection.h
+tcp_server_data.h
+thread_info.cpp
+thread_info_report.cpp
+web_adminfo.cpp
+web_cache.cpp
+web_cache.h
+web_connection.cpp
+web_connection.h
+web_connection_ptcp.cpp
+web_server.cpp
+web_server.h
+web_server_data.h
+web_tools.cpp
+web_tools.h
+
+
+           )
+

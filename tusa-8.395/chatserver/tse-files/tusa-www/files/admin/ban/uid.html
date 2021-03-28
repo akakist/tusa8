@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Консоль админа -> Кляп</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<script>
+<!--
+
+function fupdate(n)
+{
+	document.f.cmd.value=n;
+	document.f.submit();
+}
+function b_remove(id)
+{
+	document.f.cmd.value='remove';
+	document.f.id.value=id;
+	document.f.submit();
+}
+function do_add()
+{
+	if(document.f.addnick.value=='' && document.f.addlogin.value==''){
+		return false;
+        }
+	document.f.cmd.value='add';
+	document.f.bcnt.value=document.f.how.options[document.f.how.selectedIndex].text;
+//	document.f.submit();
+	return true;
+}
+var ow=0;
+function login_inf(l)
+{
+	l='logininfo?login='+l;
+	if(!ow || ow.closed){
+		ow=open(l,'owusr','toolbar=0,status=0,resizable=1,scrollbars=1,width=550,height=500');
+		ow.focus();
+	}
+	else{
+		ow.focus();
+		ow.location=l;
+	}	
+}
+//-->
+</script>
+<BODY>
+<!--
+class=trdd
+class=tdrk
+-->
+<big><big><center><b>Кляпы</b></center></big></big><br>
+<center><font class=yelmsg>~msg~</font></center>
+<center>
+~sform~
+<form name="f" method="POST">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="id" value="~id~">
+<input type=hidden name="bcnt" value="">
+Наложить кляп на <b>~login~</b><p>
+Время 
+<select name="timeban">
+<option value=60>1 минуту
+<option value=300 SELECTED>5 минут
+<option value=600>10 минут
+<option value=1200>20 минут
+<option value=1800>30 минут
+<option value=3600>1 час
+<option value=7200>2 часа
+<option value=21600>6 часов
+<option value=43200>12 часов
+<option value=86400>1 день
+<option value=172800>2 дня
+<option value=604800>1 неделю
+<option value=1209600>2 недели
+<option value=2419200>4 недели
+</select>
+<br>
+<table><tr><td>
+Комнаты<br> ~channels~ <br>
+<td></tr></table>
+Комментарий:<br>
+<textarea cols=50 rows=3 name="descr" maxlength=1024></textarea>
+
+<p>
+<input type=submit value="OK">
+~eform~
+</form>
+<p>

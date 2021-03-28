@@ -1,0 +1,4 @@
+killall -9 CS_tusa.test
+killall -9 CS_tusa.exe
+killall -9 CS_tusa.release.exe 
+

@@ -1,0 +1,13 @@
+#cd conf
+#./mkfiles
+#cd ..
+#rus/* 
+echo begining
+#find ./www/files/* |./makefiles.pl >conf/files.conf
+echo find1 done
+#find  ./conf ./pc ./www/* >/tmp/chz
+find   ./pc >/tmp/chz
+echo find2 done
+../apps/tools/gen_dump.exe /tmp/chz >file_dump.cpp
+echo gen_dump done
+#rm /tmp/chz

@@ -1,0 +1,23 @@
+<style type="text/css">
+a:hover      {color:#ff0000;}
+a#l:hover    {color:#008282;}
+.u0          {text-decoration:none;}
+h3           {font-size:20px; color:#666666; letter-spacing:-1px; line-height: 85%;}
+.hdr1        {letter-spacing:-1px; line-height: 85%;}
+
+.hdr         {font-size:11px; font-family:Tahoma,Verdana,Arial,Helvetica;}
+.mnu         {font-size:10px; font-family:Verdana,Arial,Sans-Serif;}
+.nrm         {font-size:11px; font-family:Verdana,Arial,Helvetica;}
+.inp         {font-size:11px; font-family:Verdana,Arial,Helvetica; color:#000000;}
+.txt         {font-size:14px;}
+.tx3         {font-size:12px;}
+.sm          {font-size:10px; font-family:Arial,Helvetica; font-weight:bold;}
+
+.lst         {text-indent:-13px; margin-left:14px}
+.li1         {list-style-image:url(i/li1.gif);}
+.li2         {list-style-image:url(i/li2.gif);}
+
+input {border: 1px solid #000000; background-color: #dddddd; font-family: Sans Serif; color: #000000; font-size: 11px;}
+select {border: 1px solid #000000; background-color: #dddddd; font-family: Sans Serif; color: #000000; font-size: 11px;}
+
+</style>

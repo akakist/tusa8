@@ -1,0 +1,176 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE></TITLE>
+</head>
+
+<LINK href="/css/main.css" rel=stylesheet type=text/css>
+
+<script>
+function chkall(f)
+{
+	el=document.forms[f].elements;
+	for (i=0;i<el.length;i++) if (el[i].type=='checkbox') el[i].checked=!el[i].checked;
+	return false;
+}
+
+function get_cnt(f)
+{
+	el=document.forms[f].elements;
+    var cnt=0;
+	for (i=0;i<el.length;i++) if (el[i].type=='checkbox'){
+		if(el[i].checked){
+			cnt++;
+			id=el[i].name;
+		}	
+	}
+	return cnt;
+}
+
+function n_del()
+{
+    var cnt=get_cnt('f');
+	if(cnt==0){
+		alert('Вы не выбрали для удаления ни одной записки...');
+		return false;
+	}
+	document.f.cmd.value='del';
+	document.f.submit();
+	return false;
+}
+
+function do_move()
+{
+    var cnt=get_cnt('f');
+	if(cnt==0){
+		alert('Вы не выбрали для переноса ни одной записки...');
+		return false;
+	}
+	document.f.cmd.value='move';
+	document.f.submit();
+	return false;
+}
+
+function n_reply()
+{
+    var cnt=0;
+    var id='';
+	el=document.f.elements;
+	for (i=0;i<el.length;i++) if (el[i].type=='checkbox'){
+		if(el[i].checked){
+			cnt++;
+			id=el[i].name;
+		}	
+	}
+	if(cnt==0){
+		alert('Вы не выбрали для ответа ни одной записки...');
+		return false;
+	}
+	if(cnt>1){
+		alert('Выберите только одну записку...');
+		return false;
+	}
+	id=id.substr(3,id.length-3);
+	document.location="/notes.tse/write.tse?id="+id;
+	return false;
+}
+
+function chk_file(obj)
+{
+	var fn=obj.href.toLowerCase();
+	if(fn.indexOf('.exe')!=-1){
+		if(confirm("Прикреплённый файл является исполняемым! Мы настоятельно НЕ РЕКОМЕНДУЕМ запускать его, т.к. он может сожержать в себе вирусы и пр.\nВы точно уверены что его следует скачать?")) return true;
+		return false;
+	}
+	if(fn.indexOf('.doc')!=-1 || fn.indexOf('.xls')!=-1){
+		if(confirm("Прикреплённый файл является документом Microsoft Office, и может содержать в себе вирус!\nВы точно уверены что его следует скачать?")) return true;
+		return false;
+	}
+	return true;
+}
+
+</script>
+
+<script language="javascript" src="/css/mmove.js"> </script> 
+
+<body>
+
+<TABLE border=0 width=100% cellspacing=0 cellpadding=0>
+<TR>
+<TD width=100% align=center></TD>
+</TR>
+<TR height=5><TD></TD></TR>
+<TR valign=top>
+<TD>
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr><td class=border align=center><b>Записки - ~foldername~</b></td></tr>
+<tr height=7><td></td></tr>
+<tr><td>
+<table height=100% cellspacing=0 cellpadding=0 class=border>
+<tr><td valign=top>
+
+<table height=100% border=0 cellspacing=0 cellpadding=0 class=border>
+<tr valign=top><td class=lb_c>
+<table border=0 cellspacing=0 cellpadding=0>
+~folders~
+</table>
+</td></tr>
+</table>
+
+</td>
+<td width=7>&nbsp;</td>
+<td width=100%>
+<table border=0 cellspacing=3 cellpadding=3>
+<tr valign=top align=center>
+<td><a href="/notes.tse/write.tse"><img src="/pics/new_note.gif" border=0 alt="Написать Записку" width=12 height=16><br><small>Написать</small></td>
+<td><a href="#" onclick="return n_reply();"><img src="/pics/reply.gif" border=0 alt="Ответить на выделенную" width=16 height=16><br><small>Ответить</small></td>
+<td><a href="#" onclick="return n_del();"><img src="/pics/del.gif" border=0 alt="Удалить выделенные" width=16 height=16><br><small>Удалить</small></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a href="/notes.tse/settings.tse"><img src="/pics/settings.gif" border=0 alt="Настройки" width=14 height=16><br><small>Настройки</small></td>
+<td><a href="/notes.tse"><img src="/pics/notes_stat.gif" border=0 alt="Статистика" width=17 height=16><br><small>Статистика</small></td>
+<td width=100% align=right>&nbsp;</td>
+<td><a ~prev~><img src="/pics/a_left.gif" width=16 height=16 border=0 alt="Предыдушие 20"><br><small>Предыдушие</small></a></td>
+<td><a ~next~><img src="/pics/a_right.gif" width=16 height=16 border=0 alt="Следующие 20"><br><small>Следующие</small></a></td>
+</tr>
+</table>
+<center>Всего ~allcnt~ в папке ~foldername~, показаны с ~start~ по ~end~. </center>
+<form name=f action="/notes.tse">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="f" value="~folder~">
+<table width=100% border=0 cellspacing=1 cellpadding=2>
+<tr>
+<td width=7>&nbsp;</td>
+<td width=16>&nbsp;</td>
+<td width=18>&nbsp;</td>
+<td nowrap class=trdd><font class=h><a href="?f=~folder~&sort=from_nick">От</a></font></td>
+<td width=100% class=trdd><font class=h><a href="?f=~folder~&sort=subj">Тема</a></font></td>
+<td class=trdd><font class=h><a href="?f=~folder~&sort=to_nick">Кому</a></font></td>
+<td class=trdd><font class=h><a href="?f=~folder~&sort=sent_date">Дата</a></font></td>
+<td align=center class=trdd><font class=h><a href="?f=~folder~&sort=size">Размер</a></font></td>
+<td align=center class=trdd><a href="#" onclick="return chkall('f');"><img src="/pics/yes.gif" border=0 alt="Выделить все" width=9 height=10></a></td>
+</tr>
+
+
+~notes~
+
+</table>
+<br>
+<div>
+Переложить выделенные записки в папку ~move_to_folder~ <input type=button onclick="return do_move()" value="OK"><br>
+Запомнить фильтр<input class=tc_b type=checkbox name="save_filter"> 
+</div>
+</form>
+</td></tr>
+</table>
+<tr height=7><td></td></tr>
+<tr><td class=border>&nbsp;</td></tr>
+</td></tr>
+</table>
+</TD>
+</TR>
+<tr height=15><td>&nbsp;</td></tr>
+</TABLE>
+
+</body>
+</html>

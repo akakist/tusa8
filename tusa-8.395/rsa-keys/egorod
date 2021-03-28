@@ -1,0 +1,16 @@
+application=tusachat
+host=e-gorod.kz
+host=e-gorod.kz.
+host=www.e-gorod.kz
+host=www.e-gorod.kz.
+host=e-gorod.
+host=e-gorod
+host=chat.e-gorod.kz
+host=chat.e-gorod.kz.
+host=www.chat.e-gorod.kz
+host=www.chat.e-gorod.kz.
+host=chat.e-gorod.
+host=chat.e-gorod
+valid=always
+max_users=800
+port=all

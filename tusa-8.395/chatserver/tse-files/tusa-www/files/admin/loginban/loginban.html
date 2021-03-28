@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Консоль админа -> Бан по логину</TITLE>
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+<script>
+<!--
+
+function fupdate(n)
+{
+	document.f.cmd.value=n;
+	document.f.submit();
+}
+function b_remove(id)
+{
+	document.f.cmd.value='remove';
+	document.f.id.value=id;
+	document.f.submit();
+}
+function do_add()
+{
+	if(document.f.addnick.value=='' && document.f.addlogin.value==''){
+		return false;
+        }
+	document.f.cmd.value='add';
+	document.f.bcnt.value=document.f.how.options[document.f.how.selectedIndex].text;
+//	document.f.submit();
+	return true;
+}
+var ow=0;
+function login_inf(l)
+{
+	l='logininfo?login='+l;
+	if(!ow || ow.closed){
+		ow=open(l,'owusr','toolbar=0,status=0,resizable=1,scrollbars=1,width=550,height=500');
+		ow.focus();
+	}
+	else{
+		ow.focus();
+		ow.location=l;
+	}	
+}
+//-->
+</script>
+<BODY>
+<big><big><center><b>Бан логинов</b></center></big></big><br>
+<center><font class=yelmsg>~msg~</font></center>
+<form name="f" method="POST" onSubmit="return do_add();">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="id" value="">
+<input type=hidden name="bcnt" value="">
+<table cellspacing=2 cellpadding=2 border=0 width="100%" class=border>
+<tr align=left>
+<td><a href="?sort=login" class=nick>Логин</a></td>
+<td><a href="?sort=date" class=nick>Дата</a></td>
+<td><a href="?sort=how" class=nick>На скока</a></td>
+<td><a href="?sort=who" class=nick>Кем</a></td>
+<td><a href="?sort=rdate" class=nick>Комментарий</a></td>
+<td></td>
+</tr>
+~data~
+</table>
+<p>
+<table cellspacing=0 cellpadding=0 border=0 class=border>
+<tr><td align=right valign=top>
+Добавить логин по нику: <input type=textfield name="addnick" size=20 maxlength=16><br>
+Добавить логин по логину: <input type=textfield name="addlogin" size=20 maxlength=16><br>
+Комментарий: <input type=textfield name="descr" size=20 maxlength=100>
+</td><td rowspan=2>&nbsp;на
+<select name="how">
+<option value=60>1 минуту
+<option value=300 SELECTED>5 минут
+<option value=600>10 минут
+<option value=1200>20 минут
+<option value=1800>30 минут
+<option value=3600>1 час
+<option value=7200>2 часа
+<option value=21600>6 часов
+<option value=43200>12 часов
+<option value=86400>1 день
+<option value=172800>2 дня
+<option value=604800>1 неделю
+<option value=1209600>2 недели
+</select>
+<input type=submit value="OK">
+</td>
+</tr></table>
+<p>
+Всего <b>~cnt~</b> забаненых логинa(ов).<br><br>
+<big><b>Заметка</b></big><br><br>
+Чтобы забаннить логин надо ввести ник, или логин.<br>
+Чтобы посмотреть инфу об логине, кликните на логин. (только для админов)<br>
+Если надо обновить страничку, то надо кликать кнопку "Обновить" (внизу)<br>
+Чтобы разбаннить логин, надо нажать на против него кнопку "Снять"<br>
+<br><br>
+<center>
+<input type=hidden name="sort" value="~sort~">
+<input type=button value="Обновить" onclick="fupdate('');">
+<input type=button value="Закрыть" onclick="window.close();">
+</center>
+</form>
+<p>

@@ -1,0 +1,3 @@
+#ifndef DB_VAR_MAPSBX_BANADMIN_H__
+#define DB_VAR_MAPSBX_BANADMIN_H__
+#endif

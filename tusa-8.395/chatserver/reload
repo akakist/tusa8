@@ -1,0 +1,8 @@
+ulimit -n 4092
+./kk
+killall -9 CS_tusa.exe
+killall -9 CS_tusa.release.exe
+killall -9 CS_tusa.test
+
+killall -9 CS_tusa.test
+./CS_tusa.test -d

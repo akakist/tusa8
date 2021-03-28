@@ -1,0 +1,23 @@
+body,td,  p, pre {
+
+	font-family: Tahoma,Verdana, Arial; font-size: 10pt; color: #4F5256; background-color: #eeeeee;
+}
+.mcolor {background-color: #cccccc}
+
+a.ml:link,a.ml:visited {font-size: 8pt; text-decoration: none; font-family: Verdana; color: darkblue}
+a.ml:hover {font-size: 8pt; text-decoration: underline; font-family: Verdana;}
+
+.ind {text-indent: 2em}
+a.hdr:link,a.hdr:visited, .hdr, a.hdr:hover {font-family: Verdana; font-size: 12pt; color: darkblue; text-decoration: none}
+
+a:link,a:visited {text-decoration: none; color: blue}
+a:hover  {text-decoration: underline; color: blue}
+
+input {border: 1px solid #000000; background-color: #dddddd; font-family: Sans Serif; color: #000000; font-size: 11px;}
+.cb {background-color: #eeeeee; border: 0px}
+select {border: 1px solid #000000; background-color: #dddddd; font-family: Sans Serif; color: #000000; font-size: 11px;}
+
+.brd {border: 1px solid #000000}
+.border {border: 1px solid #000000;background-color: #dddddd}
+.tdrk {background-color: #e7e7e7}
+.trdd {background-color: }

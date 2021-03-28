@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Голосование -> Инфо о голосовании</TITLE>
+</head>
+
+<LINK href="/css/main.css" rel=stylesheet type=text/css>
+
+<script>
+function check_f()
+{
+	if(document.f.msg.value==''){
+		alert('Неплохо было бы ввести сообщение...');
+		document.f.msg.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<body>
+<center></center><hr>
+<table cellspacing=2 cellpadding=2 border=0 width="100%">
+<tr><td>Ник</td><td><b>~nick~</td></tr>
+<tr><td>Мессаг</td><td><b>~msgcnt~</td></tr>
+<tr><td>Время</td><td><b>~timecnt~</td></tr>
+<tr><td>Мессаг в час</td><td><b>~mperh~</td></tr>
+<tr><td>Заходов</td><td><b>~viscnt~</td></tr>
+<tr><td>Пнули</td><td><b>~kickedcnt~</td></tr>
+<tr><td>Дата регистрации:</td><td><b>~regdate~<td></td></tr>
+<tr height=5><td colspan=2></td></tr>
+<td>Поставил на голосование</td><td><b>~addby~</td></tr>
+<td>За</td><td><b><font class=vyes>~yes~</font></td></tr>
+<td>Против</td><td><font class=vno><b>~no~</font></td></tr>
+<td>В сумме</td><td><b>~all~</td></tr>
+~sadm~
+</table>
+<hr size=2 width="100%">
+<center>~msg~
+~rmvote~</center>
+~messages~
+<br>
+~script~
+<form method=post name=f onsubmit="return check_f();">
+<input type=hidden name="addmsg" value="1">
+<input type=hidden name="id" value="~id~">
+<center>Добавить сообщение:<br>
+<TEXTAREA COLS="45" ROWS="5" MAXLENGTH="2048" NAME="msg"></TEXTAREA><br>
+<input type=submit value="Добавить"><br>
+<input type=checkbox name=show_nick class=c_b>Показывать мой ник
+</form>
+
+<a href="javascript: window.close()">Закрыть</a></center>
+<br>

@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Чат "Тусовка" - Голосование</TITLE>
+</head>
+
+<LINK href="/css/main.css" rel=stylesheet type=text/css>
+<script>
+<!--
+ow=0;
+function opwin(l,w,h)
+{
+	ow=open(l,'votewin','toolbar=0,status=0,resizable=1,scrollbars=1,width='+w+',height='+h);
+	ow.focus();
+	return false;
+}
+
+function ch_img(id)
+{
+	var n='i'+id;
+	if(document.getElementById(n)){
+		document.getElementById(n).src='/pics/hint16.gif';
+	}
+}
+//-->
+</script>
+<script language="javascript" src="/css/mmove.js"> </script> 
+
+<body>
+<TABLE border=0 width=100% cellspacing=0 cellpadding=0>
+<TR>
+<TD width=120><a href="/"><img border=0 src="/pics/logo.gif"></a></TD>
+<TD class=top_line width=5>&nbsp;</TD>
+<TD class=top_line width=100% align=center></TD>
+<TD class=top_line width=5>&nbsp;</TD>
+<!--<TD class=top_line width=140 align=center>~banner120~</TD>-->
+</TR>
+<TR height=5><TD colspan=5></TD></TR>
+<TR valign=top>
+<TD>
+<table class=borderm border=0 width=120 valign=top cellspacing=0 cellpadding=0>
+<tr height=16><td class=blr align=center><b>Навигация:</b></td></tr>
+~menu~
+</table>
+</TD>
+<TD></TD>
+<TD>
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr><td class=border align=center><b>Голосование</b></td></tr>
+<tr height=5><td></td></tr>
+<tr><td>
+<div align=justify valign=top>
+<center><font class=yelmsg>~msg~</font></center><br>
+<table align=center border=0 cellspacing=1 cellpadding=2>
+~mainrow~
+~rows~
+</table>
+~addperson~
+</table>
+<br>
+<div align=right>Подробнее о голосовании Вы можете почитать <a href="/html/help/voting.html">здесь</a>.
+<p>~foradm~
+</div>
+</div>
+<br>
+</TD>
+<TD></TD>
+</TR>
+</TABLE>
+<hr>
+</body>
+</html>

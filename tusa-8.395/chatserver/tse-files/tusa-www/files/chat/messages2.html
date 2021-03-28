@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+</HEAD>
+<SCRIPT>
+
+
+function pm(id)
+{
+	var did='msg'+id;
+
+	var el=document.getElementById(did);
+	parent.append_messages(el.innerHTML);
+	el.outerHTML="";
+				
+}
+	if(~hastopic~)	
+	{
+		parent.append_messages("<div class=sysmsg>*** Топик комнаты: <b>~topic~</b></div>");
+		parent.append_messages("<div class=sysmsg>*** Поставил(а) <b>~who~</b>, ~time~</div>");
+	}	
+
+</SCRIPT>
+
+<BODY>
+	
+

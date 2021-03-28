@@ -1,0 +1,52 @@
+// w32.idl : type library source for ActiveX Control project.
+
+// This file will be processed by the MIDL compiler tool to
+// produce the type library (w32.tlb) that will become a resource in
+// w32.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(EC737BBF-C029-4267-864E-F71035477F54), version(1.0),
+  helpfile("w32.hlp"),
+  helpstring("w32 ActiveX Control module"),
+  control ]
+library w32Lib
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for Cw32Ctrl
+
+	[ uuid(07584FE7-3832-4C2B-96E9-72EE7ED28EA3),
+	  helpstring("Dispatch interface for w32 Control")]
+	dispinterface _Dw32
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Event dispatch interface for Cw32Ctrl
+
+	[ uuid(EDB99C32-FA79-4201-80BF-C3142435C10A),
+	  helpstring("Event interface for w32 Control") ]
+	dispinterface _Dw32Events
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+	};
+
+	//  Class information for Cw32Ctrl
+
+	[ uuid(DE7E1F64-6BF1-4454-ADEA-87B5813BFA94),
+	  helpstring("w32 Control"), control ]
+	coclass w32
+	{
+		[default] dispinterface _Dw32;
+		[default, source] dispinterface _Dw32Events;
+	};
+
+};

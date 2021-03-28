@@ -1,0 +1,34 @@
+Belialov.com server license
+<
+application=webicq
+host=tusovka.tomsk.ru
+host=tusovka.tomsk.ru.
+host=webicq.tomsk.ru
+host=webicq.tomsk.ru.
+host=www.webicq.tomsk.ru
+host=www.webicq.tomsk.ru.
+host=www.tusovka.tomsk.ru
+host=www.tusovka.tomsk.ru.
+host=tusovka.metka.ru
+host=tusovka.metka.ru.
+host=www.tusovka.metka.ru
+host=www.tusovka.metka.ru.
+host=www.webicq.net
+host=www.webicq.net.
+host=webicq.net
+host=webicq.net.
+host=webicq
+host=webicq.
+host=belialov.com
+host=belialov.com.
+host=www.belialov.com
+host=www.belialov.com.
+host=localhost
+host=localhost.
+#valid=2000-10-10 00:00:00/2005-10-10 00:00:00
+valid=always
+max_users=400
+port=all
+
+>
+sign=0020068A574587863CCCF407F2CC4420E6A9EB067E97E6B24F44F3AE8A3ACD663091703BDED1F6249F2B5FCF18E57BF6B3F2C7B1AC32D4476C3DD7553930F13A9C48112B65D8ED8B2C351E601B5B70FA8CE8FB6082A097D5EDC1ACBAE1AF768044D63848EBF53AA1CD3771E715176F92E99B6561B31275BBD3E863F99DE9BCB1B938

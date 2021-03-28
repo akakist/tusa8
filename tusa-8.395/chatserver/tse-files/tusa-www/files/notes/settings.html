@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE></TITLE>
+</head>
+
+<LINK href="/css/main.css" rel=stylesheet type=text/css>
+
+<script>
+function check_send_folder()
+{
+	if(document.f1.save_copy.checked){
+		document.f1.send_to_folder.disabled=false;
+	}else{
+		document.f1.send_to_folder.disabled=true;
+	}
+	return true;
+}
+function do_rename(id,nm)
+{
+	s=prompt(' Переименовывание папки. Введите новое название',nm);
+	if(s==null)
+	{
+		return false;
+	}
+	document.f2.id.value=id;
+	document.f2.nname.value=s;
+	document.f2.cmd.value='rename';
+	document.f2.submit();
+	return false;
+}
+function do_remove(id,conf,may_r)
+{
+	if(!may_r){
+		alert('Данную папку нельзя удалить.');
+		return false;
+	}
+	if(conf){
+		if(!confirm('Данная папка не пустая! Вы действительно хотите её удалить?\n (при удалении папки все сообщения находящиеся в ней, удалятся!)')) return false;
+	}
+	document.f2.id.value=id;
+	document.f2.cmd.value='remove';
+	document.f2.submit();
+	return true;
+}
+</script>
+<script language="javascript" src="/css/mmove.js"> </script> 
+
+<body>
+
+<TABLE border=0 width=100% cellspacing=0 cellpadding=0>
+<TR>
+<TD width=100% align=center></TD>
+</TR>
+<TR height=5><TD></TD></TR>
+<TR valign=top>
+<TD>
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr><td class=border align=center><b>Настройки</b></td></tr>
+<tr height=7><td></td></tr>
+<tr><td>
+<table height=100% cellspacing=0 cellpadding=0 class=border>
+<tr><td valign=top>
+
+<table height=100% border=0 cellspacing=0 cellpadding=0 class=border>
+<tr valign=top><td class=lb_c>
+<table border=0 cellspacing=0 cellpadding=0>
+~folders~
+</table>
+</td></tr>
+</table>
+
+</td>
+<td width=7>&nbsp;</td>
+<td width=100%>
+<table border=0 cellspacing=3 cellpadding=3>
+<tr valign=top align=center>
+<td><a href="write"><img src="/pics/new_note.gif" border=0 alt="Написать Записку" width=12 height=16><br><small>Написать</small></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a href="/notes.tse"><img src="/pics/notes_stat.gif" border=0 alt="Статистика" width=17 height=16><br><small>Статистика</small></td>
+</tr>
+</table>
+<br>
+<div align=left>
+<form name=f1 method=POST>
+<input type=hidden name=cmd value=settings>
+<fieldset>
+<LEGEND class=leg><big><b>Основные настройки</b></big></LEGEND>
+<br>
+Количество записок на странице: <input type=text name=msg_per_page value="~msg_per_page~" size=3 maxlength=2><br><br>
+
+ принимать записки в папку  ~recv_from_folder~ <br>
+<input type=checkbox name=save_copy class=c_b ~save_copy~ onchange="return check_send_folder()"> сохранять отправленные записки в папке ~send_to_folder~
+<!--<br><br>
+<input type=checkbox name=desc ~desc~ class=c_b> Использовать обратную сортировку-->
+<br><br>
+<center><input type=submit value="Изменить настройки"></center>
+</fieldset>
+</form>
+
+<br>
+
+<form name=f2 method=POST>
+<input type=hidden name=cmd value="new_folder">
+<input type=hidden name=nname value="">
+<input type=hidden name=id value="">
+<fieldset>
+<LEGEND class=leg><big><b>Папки</b></big></LEGEND>
+<br>
+<table cellspacing=1 cellpadding=1 class=border>
+<tr><td class=trdd>Название</td><td class=trdd></td><td class=trdd></td></tr>
+~folders_table~
+</table>
+<br><br>
+<input type=text name=new_folder value="" size=30 maxlength=30> <input type=submit value="Создать папку">
+</fieldset>
+</form>
+
+</div>
+</td></tr>
+</table>
+<tr height=7><td></td></tr>
+<tr><td class=border>&nbsp;</td></tr>
+</td></tr>
+</table>
+</TD>
+</TR>
+<tr height=15><td>&nbsp;</td></tr>
+</TABLE>
+
+<script>
+check_send_folder();
+</script>
+
+</body>
+</html>

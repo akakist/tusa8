@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="PRAGMA" CONTENT="no-cache">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>messages</TITLE>
+<script language="javascript" src="/css/smiles.js"> </script> 
+<script>
+</script>
+<script language="javascript" src="/css/messages-mnu0.js"> </script> 
+
+</head>
+
+<LINK rel="stylesheet" type="text/css" href="/css/main.css">
+
+<style>
+
+TD {vertical-align: Top; FONT-FAMILY: Verdana, Arial; FONT-SIZE: 9pt; color:#dcdcdc; background-color: transparent}
+</style>
+
+<script>
+var uid=~uid~;
+var channel="~channel~";
+</script>
+<script>
+
+
+
+
+<!--
+var ftime=0;
+var m_v=0;
+var s_s=0;
+var nick;
+var cid;
+
+window.defaultStatus='Чат "Тусовка"';
+//-->
+</SCRIPT>
+<!--BODY OnLoad="bl();" OnMouseMove="parent.mm(0);" topmargin=1 leftmargin=0 RIGHTMARGIN=0 style="background-image: url(/pics/back8.jpg); background-repeat: no-repeat; background-position: 100% 0%;" bgproperties="FIXED" class=as oncontextmenu="return do_show_menu(this);" onclick="return do_hide_menu()" style="margin-right: 0px; margin-left: 0px"-->
+<BODY OnLoad="bl();" OnMouseMove="parent.mm(0);" topmargin=1 leftmargin=0 RIGHTMARGIN=0 class=as oncontextmenu="return do_show_menu(this);" onclick="return do_hide_menu()" style="margin-right: 0px; margin-left: 0px">
+<script>
+	parent.connected=true;
+	init_msg();
+	parent.set_topic('~topic2~');
+
+function userinfoNI(nick)
+{
+	r=Math.round(Math.random(123)*1000);
+	{
+//	id=FindIDByNick(nick);
+		locat='/c2/chat_userinfo2.php?ni='+escape(nick);
+		open(locat,'uinfo'+r,'toolbar=0,status=0,resizable=1,scrollbars=1,width=1000,height=800');
+	}
+	return false;
+}
+	
+</script>
+
+
+<div id=menu style="visibility: hidden; position: absolute">
+<table class=border>
+<form name="f" action="/admin/userlist_command" method="POST" target="hidden">
+<input type=hidden name="cmd" value="">
+<input type=hidden name="id" value="">
+<input type=hidden name="nick" value="">
+<input type=hidden name="sort" value="~sort~">
+<input type=hidden name="msg" value="">
+</form>
+<tr><td align=center><div id=menunick class=nick></div></td></tr>
+<tr><td cmd=1 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);"><a href="#" onclick="mClk(1,nick);">В приват</a></td></tr>
+<tr><td cmd=2 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);"><a href="#" onclick="userinfoNI(nick);">Информация</a></td></tr>
+<tr><td><hr size=1 width=100%></td></tr>
+<tr><td cmd=3 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);">В игнор</td></tr>
+<script>
+		if(parent.level>=6){
+		document.write('<tr><td cmd=4 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);">Кик(причина)</td></tr>');
+		document.write('<tr><td cmd=9 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);">Кик(флуд)</td></tr>');		
+		document.write('<tr><td cmd=8 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);">Кик(маты)</td></tr>');
+		document.write('<tr><td cmd=5 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);">Кик+IP бан</td></tr>');
+		}
+		if(parent.level>=7){
+		document.write('<tr><td cmd=6 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);">Кик+ник бан</td></tr>');
+		document.write('<tr><td cmd=7 onmouseover="mOvr(this);" onmouseout="mOut(this);" onclick="mClk(this);">Кик+логин бан</td></tr>');
+	}
+</script>
+</table>
+</div>
+~top~
+<TABLE border=0 id=hs><TR><TD><font class=ms>*** Топик комнаты: <b>~topic~</b></TD></TR></TABLE>
+<TABLE border=0 id=hs><TR><TD><font class=ms>*** Поставил(а) <b>~who~</b>, ~time~</b></TD></TR></TABLE>
+~etop~

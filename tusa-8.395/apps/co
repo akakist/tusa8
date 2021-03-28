@@ -1,0 +1,2 @@
+#!/bin/sh
+iconv --from-code=cp1251 --to-code=utf8 $1 >$2
