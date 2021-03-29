@@ -60,7 +60,7 @@ public:
         }
         return false;
     }
-#ifndef WIN32
+/*#ifndef WIN32
     bool try_extract_first(T1 & conn)
     {
         MUTEX_TRY_LOCK kaka(Mutex);
@@ -77,7 +77,8 @@ public:
         }
         return false;
     }
-#endif
+#endif*/
+
 
 };
 #endif

@@ -5,10 +5,11 @@
 #include <stdio.h>
 #include "st_stuff.h"
 #include "str_lib.h"
-#include "mysql_extens.h"
+//#include "mysql_extens.h"
 #include <time.h>
 #include <set>
 #include "st_rsa.h"
+
 #include "file_set.h"
 int main(int argc, char **argv)
 // main(int argc, char * argv[])
